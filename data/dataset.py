@@ -9,6 +9,7 @@ import os
 import spacy
 import re
 import random
+sys.path.append('SICK_Summarization/')
 
 
 
