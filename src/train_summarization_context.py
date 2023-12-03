@@ -17,7 +17,7 @@ from transformers import AutoConfig, AutoModelForSeq2SeqLM
 from transformers import Seq2SeqTrainingArguments, Seq2SeqTrainer
 #from datasets import load_metric
 from datasets import load_metric
-import wandb
+#import wandb
 from data.dataset import SamsumDataset_total, DialogsumDataset_total
 
 # Set Argument Parser
@@ -72,6 +72,7 @@ print('######################################################################')
 
 
 # Start WANDB Log (Set Logging API)
+'''
 wandb.init(project="ICSK4AS", reinit=True, entity='icsk4as')
 if args.use_paracomet:
     cs = "para"
@@ -92,7 +93,7 @@ print("#"*50)
 print(cs)
 print("#"*50)
 wandb.run.name = f"context_{args.dataset_name}_{args.relation}_{cs}_lr{str(args.init_lr)}"
-
+'''
 
 # Define Global Values
 model_checkpoint_list = [
@@ -229,7 +230,7 @@ finetune_args = Seq2SeqTrainingArguments(
     generation_num_beams=5,
     metric_for_best_model='eval_rouge1',
     greater_is_better=True,
-    report_to = 'wandb',
+    #report_to = 'wandb',
 )
 
 def compute_metrics(eval_pred):
@@ -310,4 +311,4 @@ with open(args.test_output_file_name,"w") as f:
         f.write(i.replace("\n","")+"\n")
 """
 # END WANDB log
-wandb.finish()
+#wandb.finish()
