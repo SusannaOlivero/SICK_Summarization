@@ -20,6 +20,8 @@ from datasets import load_metric
 #import wandb
 from data.dataset import SamsumDataset_total, DialogsumDataset_total
 
+device = torch.device('cuda') # for torch in 16
+
 # Set Argument Parser
 parser = argparse.ArgumentParser()
 # Training hyperparameters
@@ -145,11 +147,11 @@ if args.dataset_name not in dataset_list:
 
 
 # Set metric
-#metric = load_metric("rouge")
-metric = load_metric("../utils/rouge.py")
+metric = load_metric("rouge")
+#metric = load_metric("../utils/rouge.py")
 
 # Load Tokenizer associated to the model
-tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+tokenizer = AutoTokenizer.from_pretrained(args.model_name, torch_dtype=torch.float16, device_map=device)
 
 # Add special token 
 special_tokens_dict = {'additional_special_tokens':['<I>','</I>']}
@@ -178,8 +180,8 @@ print('######################################################################')
 
 
 # Loading checkpoint of model
-config = AutoConfig.from_pretrained(args.model_name)
-finetune_model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name)
+config = AutoConfig.from_pretrained(args.model_name, torch_dtype=torch.float16, device_map=device)
+finetune_model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name, torch_dtype=torch.float16, device_map=device)
 print('######################################################################')
 print("Number of Model Parameters are : ",finetune_model.num_parameters())
 print('######################################################################')
