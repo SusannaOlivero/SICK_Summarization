@@ -10,6 +10,7 @@ import sys
 sys.path.append('../')
 import argparse
 import random
+import datasets
 import json
 import nltk
 import numpy as np
