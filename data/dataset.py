@@ -9,9 +9,9 @@ import os
 import spacy
 import re
 import random
+
+import sys
 sys.path.append('SICK_Summarization/')
-
-
 
 class SamsumDataset(Dataset):
     def __init__(self, encoder_max_len, decoder_max_len, split_type, 
