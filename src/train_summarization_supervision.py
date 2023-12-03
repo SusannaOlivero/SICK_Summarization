@@ -7,7 +7,7 @@ import os
 #os.environ['CUDA_VISIBLE_DEVICES']="4,5,6"
 
 import sys
-sys.path.append('../')
+sys.path.append('SICK_Summarization/')
 import argparse
 import random
 import datasets
