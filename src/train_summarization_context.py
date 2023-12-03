@@ -8,6 +8,7 @@ import random
 import json
 import datasets
 import nltk
+nltk.download('punkt')
 import numpy as np
 import torch
 import torch.nn as nn
@@ -223,7 +224,7 @@ finetune_args = Seq2SeqTrainingArguments(
     #warmup_ratio= ,
     warmup_steps= args.warm_up,
     save_total_limit=1,
-    fp16=True,
+    #fp16=True,
     seed = 516,
     load_best_model_at_end=True,
     predict_with_generate=True,
