@@ -1,7 +1,7 @@
 import os
 
 import sys
-sys.path.append('../')
+sys.path.append('SICK_Summarization/')
 import argparse
 import random
 import json
