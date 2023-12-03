@@ -2,7 +2,7 @@ import os
 os.environ['WANDB_SILENT']="true"
 
 import sys
-sys.path.append('content/SICK_Summarization/') #(../)
+sys.path.append('../') #(../)
 import argparse
 import random
 import json
